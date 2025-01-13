@@ -2,18 +2,20 @@ import { useEffect, useState } from 'react'
 import './addToDo.css'
 import { addToDo, updateToDo } from '../features/todo/todoSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import ToDo from './ToDo'
 
 export function AddToDo() {
+
 	const [input, setInput] = useState('')
-	const dispatch = useDispatch()
-	const editableToDo = useSelector(state => state.editableToDo)
+	
+  const dispatch = useDispatch()
+	
+  const editableToDo = useSelector(state => state.editableToDo)
 
 	const addToDohandler = e => {
 		e.preventDefault()
 		if (!input) return
 		if (editableToDo) {
-			dispatch(updateToDo({ id: editableToDo.id, text: editableToDo.text }))
+			dispatch(updateToDo({ id: editableToDo.id, text: input }))
 			// dispatch(addToDo(input))
 		} else {
 			dispatch(addToDo(input))
