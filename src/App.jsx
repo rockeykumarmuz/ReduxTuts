@@ -1,13 +1,20 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import { AddToDo } from './components/AddToDo'
-import ToDo from './components/ToDo'
+import AddToDoTaskManager from './features/todo/Index'
+import PostManager from './features/posts/Index'
 
 function App() {
 	return (
-		<>
-			<AddToDo />
-			<ToDo />
-		</>
+		<main className='App'>
+			<BrowserRouter>
+				<Routes>
+					<Route>
+						<Route path='redux/addToDo' element={<AddToDoTaskManager />} />
+						<Route path='redux/posts' element={<PostManager />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
+		</main>
 	)
 }
 

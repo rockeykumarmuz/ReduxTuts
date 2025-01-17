@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, shallowEqual } from 'react-redux'
 import { removeToDo, setEditableToDo } from '../features/todo/todoSlice'
 import { MdDeleteForever, MdEdit } from 'react-icons/md'
 
 const ToDo = () => {
-	const todos = useSelector(state => state.todos)
+	const todos = useSelector(state => state.todo.todos, shallowEqual)
 	const dispatch = useDispatch()
 
 	return (
