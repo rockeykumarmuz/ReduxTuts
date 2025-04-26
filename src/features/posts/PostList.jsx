@@ -1,15 +1,20 @@
 import React from 'react'
-import { shallowEqual, useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import './PostList.css'
 import { selectAllPosts } from './postsSlice'
 import PostAuthor from './PostAuthor'
 import TimeAgo from './TimeAgo'
 import ReactionButton from './ReactionButton'
+import { useEffect } from 'react'
 
 const PostList = () => {
 	// shallowEqual performs a shallow comparison to ensure that the component doesn't re-render unless state.tasks has changed.
 	// const posts = useSelector(state => state.posts.posts)
 	const posts = useSelector(selectAllPosts)
+
+	useEffect(() => {
+		
+	}, [posts])
 
 	const renderPosts = posts.map(post => (
 		<article key={post.id}>
